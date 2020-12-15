@@ -33,26 +33,30 @@ def find_row(tickets = pd.DataFrame()):
         low = 0 
         high = 127
         for j in ticket_row:
-            mid = round(high/2)
+            #print(low,"/",high)
+            mid = round((high + low)/ 2) 
             # if last i set to row_num 
-            if (j == max(ticket_row)):
+            if j == max(ticket_row):
                 #keep high
-                if tickets[i][j] == "F": row_num = low
+                if tickets[i][j] == 'F': row_num = low
                 # keep low 
-                elif tickets[i][j] == "B": row_num = high
+                elif tickets[i][j] == 'B': row_num = high
                 else: print("type 1 error")
             else:
                 #keep range < mid
-                if tickets[i][j] == "F": high = mid
+                if tickets[i][j] == 'F': high = mid
                 #keep range > mid
-                elif tickets[i][j] == "B": low = mid
+                elif tickets[i][j] == 'B': low = mid
                 else: print("type 2 error")
         row_numbers.append(row_num)
     return(row_numbers)
 
-find_row(tickets = seats["tik_info"])
+row_output = find_row(tickets = seats["tik_info"])
+row_output
 
 
-seats["tik_info"][0][7]
 
-ticket_row = range(0,8)
+
+
+
+
